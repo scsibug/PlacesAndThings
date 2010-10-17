@@ -7,18 +7,19 @@
 	<script src="js/jquery.mobile-1.0a1.min.js"></script>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-theme="b" id="home">
 
 	<div data-role="header">
 		<h1>Places and Things</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Welcome to Places and Things!</p>		
-                <ul>
-                  <li><a data-role="button" href="#places">Places</a></li>
-                  <li><a data-role="button" href="#things">Things</a></li>
-                </ul>
+          <p>Welcome to Places and Things!</p>
+                <div data-role="controlgroup" data-type="horizontal">
+                  <a data-role="button" data-icon="arrow-r" href="#places">Places</a></li>
+                  <a data-role="button" data-icon="arrow-r" href="#things">Things</a></li>
+                </div>
+
 	</div><!-- /content -->
 
 	<div data-role="footer">
