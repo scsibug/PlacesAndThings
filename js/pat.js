@@ -13,7 +13,9 @@ function debugPlaces() {
 
 function displayPlaces() {
   var p = getPlaces();
+  $('#display-places-ulist').remove();
   var list = $("<ul>", {"class": "ui-listbox-list",
+                        "id": "display-places-ulist",
                         "data-inset": "true"}
               ).appendTo('#placesIntro');
   $.each(p,function(k,v) {

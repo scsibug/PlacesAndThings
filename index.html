@@ -11,10 +11,11 @@
 $(document).ready(function(){
   if (Modernizr.localstorage) {
     // window.localStorage is available
-    displayPlaces()
     $('#create-place-button').click(function() {
       addPlace($('#new-place-text').val());
+      displayPlaces(); // update places list
     });
+    displayPlaces();
   } else {
     window.location.hash = "#unsupported"
   }
