@@ -1,0 +1,2 @@
+# Directive to ensure HTML5 manifest files served as appropriate content type.
+AddType text/cache-manifest .manifest
