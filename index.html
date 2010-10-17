@@ -86,7 +86,7 @@ function getPlaces() {
 
 	<div data-role="content">
           <p id="placesIntro"></p>
-          <a href="#addPlace" data-inline="true" data-role="button" data-icon="plus">Add Place</a>
+          <a href="addPlace.html" data-rel="dialog" data-transition="pop" data-inline="true" data-role="button" data-icon="plus">Add Place</a>
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -102,6 +102,21 @@ function getPlaces() {
 
 	<div data-role="content">
 		<p>View all things here.</p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="addPlace">
+
+	<div data-role="header">
+		<h1>Add New Place</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p>Create a new place.</p>
 	</div><!-- /content -->
 
 	<div data-role="footer">
