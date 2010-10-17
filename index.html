@@ -12,10 +12,14 @@ $(document).ready(function(){
   if (Modernizr.localstorage) {
     // window.localStorage is available
     displayPlaces()
+    $('#create-place-button').click(function() {
+      addPlace($('#new-place-text').val());
+    });
   } else {
     window.location.hash = "#unsupported"
   }
 });
+
 </script>
 </head>
 <body>
@@ -48,7 +52,7 @@ $(document).ready(function(){
 
 	<div data-role="content">
           <p id="placesIntro"></p>
-          <a href="addPlace.html" data-rel="dialog" data-transition="pop" data-inline="true" data-role="button" data-icon="plus">Add Place</a>
+          <a href="#add-place" data-rel="dialog" data-transition="pop" data-inline="true" data-role="button" data-icon="plus">Add Place</a>
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -71,20 +75,25 @@ $(document).ready(function(){
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-<div data-role="page" id="addPlace">
+<div data-role="page" id="add-place">
 
-	<div data-role="header">
-		<h1>Add New Place</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<p>Create a new place.</p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4></h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+  <div data-role="header" data-theme="d" data-position="inline">
+    <h1>Add Place</h1>
+  </div>
+  
+  <div data-role="content" data-theme="c">
+    <h1>Create New Place</h1>
+    <p>Create a new place by completing this form.</p>
+    <form id="addPlaceForm" action="#" method="get">
+      <div data-role="fieldcontain">
+        <label for="name">Place Name:</label>
+        <input type="text" name="place" id="new-place-text" value=""  />
+      </div>
+    </form>
+    <a id="create-place-button" href="#places" data-role="button" data-theme="b">Create</a>       
+    <a href="#places" data-role="button" data-theme="c">Cancel</a>        
+  </div>
+</div>
 
 <div data-role="page" id="unsupported">
 
