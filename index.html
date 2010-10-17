@@ -15,7 +15,12 @@ $(document).ready(function(){
       addPlace($('#new-place-text').val());
       displayPlaces(); // update places list
     });
+    $('#create-thing-button').click(function() {
+      addThing($('#new-thing-text').val());
+      displayThings(); // update things list
+    });
     displayPlaces();
+    displayThings();
   } else {
     window.location.hash = "#unsupported"
   }
@@ -68,7 +73,8 @@ $(document).ready(function(){
 	</div><!-- /header -->
 
 	<div data-role="content">
-		<p>View all things here.</p>
+          <p id="thingsIntro"></p>
+          <a href="#add-thing" data-rel="dialog" data-transition="pop" data-inline="true" data-role="button" data-icon="plus">Add Thing</a>
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -93,6 +99,26 @@ $(document).ready(function(){
     </form>
     <a id="create-place-button" href="#places" data-role="button" data-theme="b">Create</a>       
     <a href="#places" data-role="button" data-theme="c">Cancel</a>        
+  </div>
+</div>
+
+<div data-role="page" id="add-thing">
+
+  <div data-role="header" data-theme="d" data-position="inline">
+    <h1>Add Thing</h1>
+  </div>
+  
+  <div data-role="content" data-theme="c">
+    <h1>Create New Thing</h1>
+    <p>Create a new thing by completing this form.</p>
+    <form id="addThingForm" action="#" method="get">
+      <div data-role="fieldcontain">
+        <label for="name">Thing Name:</label>
+        <input type="text" name="thing" id="new-thing-text" value=""  />
+      </div>
+    </form>
+    <a id="create-thing-button" href="#things" data-role="button" data-theme="b">Create</a>       
+    <a href="#things" data-role="button" data-theme="c">Cancel</a>        
   </div>
 </div>
 
