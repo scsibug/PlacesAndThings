@@ -7,11 +7,13 @@
 	<script src="js/jquery.mobile-1.0a1.min.js"></script>
         <script src="js/modernizr-1.5.min.js"></script>
 <script type="text/javascript">
-if (Modernizr.localstorage) {
-  // window.localStorage is available
-} else {
-  window.location.hash = "#unsupported"
-}
+$(document).ready(function(){
+  if (Modernizr.localstorage) {
+    // window.localStorage is available
+  } else {
+    window.location.hash = "#unsupported"
+  }
+});
 </script>
 </head>
 <body>
