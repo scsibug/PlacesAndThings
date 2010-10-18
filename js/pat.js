@@ -3,17 +3,14 @@ var thing_prefix = "pat.t."
 var place_count_key = "pat.places.count"
 var thing_count_key = "pat.places.count"
 function addPlace(name) {
-  window.localStorage[place_prefix+name] = name
+  var p = new Object()
+  p.name = name
+  window.localStorage[place_prefix+name] = JSON.stringify(p);
 }
 function addThing(name) {
-  window.localStorage[thing_prefix+name] = name
-}
-
-function debugPlaces() {
-  var p = getPlaces();
-  $.each(p, function(k,v) {
-    alert("key: "+k+", value: "+v);
-  });
+  var t = new Object()
+  t.name = name
+  window.localStorage[thing_prefix+name] = JSON.stringify(t);
 }
 
 function countPlaces() {
@@ -43,7 +40,7 @@ function updatePlacesDisplay() {
                         "data-inset": "true"}
               ).appendTo('#placesIntro');
   $.each(p,function(k,v) {
-    $('<li><a href="#'+k+'">'+k+'</a></li>').appendTo(list);
+    $('<li><a href="#place-detail-'+k+'">'+v.name+'</a></li>').appendTo(list);
   });
   list.listview();
 }
@@ -55,7 +52,7 @@ function getPlaces() {
   for(i=0;i<keycount;i++) {
     key = localStorage.key(i);
     if (key.substr(0,6) == place_prefix) {
-      places[key.substr(6)] = window.localStorage.getItem(key)
+      places[key.substr(6)] = JSON.parse(window.localStorage.getItem(key));
     }
   }
   return places
@@ -72,7 +69,7 @@ function updateThingsDisplay() {
                         "data-inset": "true"}
               ).appendTo('#thingsIntro');
   $.each(p,function(k,v) {
-    $('<li><a href="#'+k+'">'+k+'</a></li>').appendTo(list);
+    $('<li><a href="#thing-detail-'+k+'">'+v.name+'</a></li>').appendTo(list);
   });
   list.listview();
 }
@@ -84,7 +81,7 @@ function getThings() {
   for(i=0;i<keycount;i++) {
     key = localStorage.key(i);
     if (key.substr(0,6) == thing_prefix) {
-      things[key.substr(6)] = window.localStorage.getItem(key)
+      things[key.substr(6)] = JSON.parse(window.localStorage.getItem(key));
     }
   }
   return things
