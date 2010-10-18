@@ -66,3 +66,8 @@ function getThings() {
   }
   return things
 }
+
+// clear all saved content
+function clearLocalStorage() {
+  window.localStorage.clear();
+}

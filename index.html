@@ -12,6 +12,12 @@ $(document).ready(function(){
   if (Modernizr.localstorage) {
     // window.localStorage is available
 
+    $('#reset-all').click(function(){
+      clearLocalStorage();
+      displayPlaces();
+      displayThings();
+    });
+
     $('#create-place-button').click(createPlaceSubmittal);
     $('#add-place-form').submit(createPlaceSubmittal);
 
@@ -52,6 +58,11 @@ $(document).ready(function(){
             <li data-role="list-divider">Inventory</li>
             <li><a href="#places">Places</a></li>
             <li><a href="#things">Things</a></li>
+          </ul>
+
+          <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="b">
+            <li data-role="list-divider">Administration</li>
+            <li><a id="reset-all" href="" >Reset (no confirmation!)</a></li>
           </ul>
 
 	</div><!-- /content -->
