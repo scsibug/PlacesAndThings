@@ -11,14 +11,25 @@
 $(document).ready(function(){
   if (Modernizr.localstorage) {
     // window.localStorage is available
-    $('#create-place-button').click(function() {
-      addPlace($('#new-place-text').val());
-      displayPlaces(); // update places list
-    });
-    $('#create-thing-button').click(function() {
+
+    $('#create-place-button').click(createPlaceSubmittal);
+    $('#add-place-form').submit(createPlaceSubmittal);
+
+    $('#create-thing-button').click(createThingSubmittal);
+    $('#add-thing-form').submit(createThingSubmittal);
+
+    function createThingSubmittal() {
       addThing($('#new-thing-text').val());
       displayThings(); // update things list
-    });
+      window.location.hash = "#things";
+    }
+
+    function createPlaceSubmittal() {
+      addPlace($('#new-place-text').val());
+      displayPlaces(); // update places list
+      window.location.hash = "#places";
+    }
+
     displayPlaces();
     displayThings();
   } else {
@@ -87,18 +98,18 @@ $(document).ready(function(){
   <div data-role="header" data-theme="d" data-position="inline">
     <h1>Add Place</h1>
   </div>
-  
+
   <div data-role="content" data-theme="c">
     <h1>Create New Place</h1>
     <p>Create a new place by completing this form.</p>
-    <form id="addPlaceForm" action="#" method="get">
+    <form id="add-place-form" action="" method="get">
       <div data-role="fieldcontain">
         <label for="name">Place Name:</label>
         <input type="text" name="place" id="new-place-text" value=""  />
       </div>
     </form>
-    <a id="create-place-button" href="#places" data-role="button" data-theme="b">Create</a>       
-    <a href="#places" data-role="button" data-theme="c">Cancel</a>        
+    <a id="create-place-button" href="#places" data-role="button" data-theme="b">Create</a>
+    <a href="#places" data-role="button" data-theme="c">Cancel</a>
   </div>
 </div>
 
@@ -107,18 +118,18 @@ $(document).ready(function(){
   <div data-role="header" data-theme="d" data-position="inline">
     <h1>Add Thing</h1>
   </div>
-  
+
   <div data-role="content" data-theme="c">
     <h1>Create New Thing</h1>
     <p>Create a new thing by completing this form.</p>
-    <form id="addThingForm" action="#" method="get">
+    <form id="add-thing-form" action="" method="get">
       <div data-role="fieldcontain">
         <label for="name">Thing Name:</label>
         <input type="text" name="thing" id="new-thing-text" value=""  />
       </div>
     </form>
-    <a id="create-thing-button" href="#things" data-role="button" data-theme="b">Create</a>       
-    <a href="#things" data-role="button" data-theme="c">Cancel</a>        
+    <a id="create-thing-button" href="#things" data-role="button" data-theme="b">Create</a>
+    <a href="#things" data-role="button" data-theme="c">Cancel</a>
   </div>
 </div>
 
