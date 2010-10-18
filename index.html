@@ -14,8 +14,8 @@ $(document).ready(function(){
 
     $('#reset-all').click(function(){
       clearLocalStorage();
-      displayPlaces();
-      displayThings();
+      updatePlacesDisplay();
+      updateThingsDisplay();
     });
 
     $('#create-place-button').click(createPlaceSubmittal);
@@ -26,18 +26,18 @@ $(document).ready(function(){
 
     function createThingSubmittal() {
       addThing($('#new-thing-text').val());
-      displayThings(); // update things list
+      updateThingsDisplay(); // update things list
       window.location.hash = "#things";
     }
 
     function createPlaceSubmittal() {
       addPlace($('#new-place-text').val());
-      displayPlaces(); // update places list
+      updatePlacesDisplay(); // update places list
       window.location.hash = "#places";
     }
 
-    displayPlaces();
-    displayThings();
+    updatePlacesDisplay();
+    updateThingsDisplay();
   } else {
     window.location.hash = "#unsupported"
   }
@@ -57,8 +57,8 @@ $(document).ready(function(){
           <p>This is an experimental tool to learn and demo jQuery-mobile, and HTML5.  Use at your own risk!</p>
           <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="b">
             <li data-role="list-divider">Inventory</li>
-            <li><a href="#places">Places</a></li>
-            <li><a href="#things">Things</a></li>
+            <li><a href="#places">Places</a><span id="places-count" class="ui-li-count">0</span></li>
+            <li><a href="#things">Things</a><span id="things-count" class="ui-li-count">0</span></li>
           </ul>
 
           <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="b">

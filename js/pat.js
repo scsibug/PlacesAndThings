@@ -1,6 +1,7 @@
 var place_prefix = "pat.p."
 var thing_prefix = "pat.t."
-
+var place_count_key = "pat.places.count"
+var thing_count_key = "pat.places.count"
 function addPlace(name) {
   window.localStorage[place_prefix+name] = name
 }
@@ -15,8 +16,27 @@ function debugPlaces() {
   });
 }
 
-function displayPlaces() {
+function countPlaces() {
+  var c = 0;
+  $.each(getPlaces(),function(k,v) {
+    c++;
+  });
+  return c
+}
+
+function countThings() {
+  var c = 0;
+  $.each(getThings(),function(k,v) {
+    c++;
+  });
+  return c
+}
+
+function updatePlacesDisplay() {
   var p = getPlaces();
+  // In the main page, show the count of places
+  $('#places-count').text(countPlaces());
+  // In places page, show a list of places
   $('#display-places-ulist').remove();
   var list = $("<ul>", {"class": "ui-listbox-list",
                         "id": "display-places-ulist",
@@ -41,8 +61,11 @@ function getPlaces() {
   return places
 }
 
-function displayThings() {
+function updateThingsDisplay() {
   var p = getThings();
+  // In the main page, show the count of places
+  $('#things-count').text(countThings());
+  // In things page, show list of things
   $('#display-things-ulist').remove();
   var list = $("<ul>", {"class": "ui-listbox-list",
                         "id": "display-things-ulist",
